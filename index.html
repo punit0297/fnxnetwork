@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNX NETWORK | Official Store & Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #55FF55;
+            --mc-gold: #FFAA00;
+            --mc-cyan: #55FFFF;
+            --accent-green-alt: #00FF00;
+            --bg-black: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(85, 255, 85, 0.2);
+            --card-bg: #121212;
+            --text-white: #ffffff;
+            --text-gray: #b3b3b3;
+            --glow-shadow: 0 0 20px rgba(85, 255, 85, 0.4);
+            --transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-black);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('https://i.ibb.co/3yyhgg4L/image.png');
+            background-size: cover; background-position: center;
+            z-index: -1;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--glass-border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; z-index: 1000;
+        }
+
+        .logo-text { font-family: 'Oswald'; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); letter-spacing: 2px; }
+        .nav-links { display: flex; list-style: none; gap: 15px; }
+        .nav-links a { text-decoration: none; color: var(--text-white); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
+
+        section { padding: 100px 10% 60px; min-height: 40vh; }
+        .section-title { text-align: center; font-family: 'Oswald', sans-serif; font-size: 2.2rem; margin-bottom: 50px; text-transform: uppercase; }
+        .section-title span { color: var(--primary-green); }
+
+        /* Animation Trigger Class */
+        [data-reveal] { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+        [data-reveal].active { opacity: 1; transform: translateY(0); }
+
+        /* Cards Styling */
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; justify-content: center; max-width: 1000px; margin: 0 auto; }
+        .staff-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 30px 20px; text-align: center; transition: var(--transition); backdrop-filter: blur(5px); border-radius: 10px; }
+        .staff-card:hover { transform: translateY(-10px); border-color: var(--primary-green); box-shadow: var(--glow-shadow); }
+        
+        .avatar-box { width: 80px; height: 80px; margin: 0 auto 15px; border: 2px solid var(--primary-green); padding: 5px; background: #111; }
+        .avatar-box img { width: 100%; height: 100%; image-rendering: pixelated; }
+        .staff-name { font-family: 'Oswald', sans-serif; font-size: 1.4rem; margin-bottom: 5px; }
+        .staff-role { font-weight: 700; color: var(--text-gray); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Feature Cards (About) */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .feature-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); padding: 40px 30px; border-radius: 20px; transition: var(--transition); }
+        .feature-card:hover { border-color: var(--primary-green); transform: scale(1.02); }
+        .feature-icon { 
+            background: rgba(85, 255, 85, 0.1); 
+            color: var(--primary-green); 
+            width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; 
+            border-radius: 12px; margin-bottom: 20px; font-size: 1.5rem; 
+        }
+
+        .btn { padding: 14px 35px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: var(--transition); text-decoration: none; font-family: 'Oswald'; border: 2px solid var(--primary-green); display: inline-block; border-radius: 5px; }
+        .btn-primary { background: var(--primary-green); color: #000; }
+        .btn-discord { 
+            background: var(--primary-green); 
+            color: #000; 
+            border: none; padding: 20px 45px; font-size: 1rem; border-radius: 12px; 
+            box-shadow: 0 0 25px rgba(85, 255, 85, 0.3); 
+            font-family: 'Montserrat'; font-weight: 900; cursor: pointer; transition: 0.3s; 
+        }
+        .btn-discord:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        /* Store Specific Styles from Image */
+        .store-section { 
+            text-align: center; 
+            padding: 80px 10% 80px; /* Increased padding for more space */
+            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 70%, #000 100%); /* Subtle gradient */
+        }
+        .launching-tag {
+            background: var(--primary-green); /* Green tag */
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(85, 255, 85, 0.3);
+        }
+        .store-section h1 {
+            font-size: clamp(3rem, 7vw, 6rem); /* Larger and responsive */
+            font-family: 'Oswald', sans-serif; /* Changed to Oswald for this large text */
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-white);
+        }
+        .store-section h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem); /* Also larger */
+            font-family: 'Oswald', sans-serif; /* Changed to Oswald */
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: var(--text-white); /* White for Coming Soon */
+            opacity: 0.9;
+        }
+        .store-section p {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .store-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 80px; /* More space below button */
+        }
+        .stat-card { 
+            text-align: center; 
+            padding: 20px; 
+            min-width: 150px; /* Ensure cards don't shrink too much */
+        }
+        .stat-number { 
+            font-family: 'Oswald'; 
+            font-size: 2.8rem; 
+            color: var(--primary-green); /* Changed to green */
+            font-weight: 700; display: block; 
+            margin-bottom: 5px;
+        }
+        .stat-desc { 
+            text-transform: uppercase; 
+            font-size: 0.75rem; /* Slightly larger */
+            letter-spacing: 1.5px; /* More spacing */
+            color: var(--text-gray); 
+            font-weight: 700; 
+        }
+
+
+        footer { text-align: center; padding: 80px 0; background: #000; border-top: 2px solid var(--glass-border); }
+        .footer-socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+        .footer-socials a { color: #fff; font-size: 2rem; transition: 0.3s; }
+        .footer-socials a:hover { color: var(--primary-green); transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+
+    <div class="hero-bg"></div>
+
+    <nav>
+        <div class="logo-text">FNX NETWORK</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#owners">Owners</a></li>
+            <li><a href="#store">Store</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#server">IP</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <h1 data-reveal style="font-family: 'Oswald'; font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 900; letter-spacing: 5px; filter: drop-shadow(0 0 20px var(--primary-green));">FNX NETWORK</h1>
+        <p data-reveal style="letter-spacing: 4px; color: var(--text-gray); margin-bottom: 30px; font-weight: 700;">THE ULTIMATE GAMING HUB</p>
+        <a data-reveal href="#server" class="btn btn-primary">Join Now</a>
+    </section>
+
+    <section id="owners" data-reveal>
+        <h2 class="section-title">NETWORK <span>OWNERS</span></h2>
+        <div class="staff-grid" style="max-width: 500px;">
+            <a href="https://flustooweb1.vercel.app/" target="_blank" style="text-decoration:none; color:inherit;">
+                <div class="staff-card" style="border-color: var(--mc-gold);">
+                    <div class="avatar-box" style="border-color: var(--mc-gold);"><img src="https://mc-heads.net/avatar/Flustooyt/100"></div>
+                    <h3 class="staff-name">flustoo</h3>
+                    <p class="staff-role" style="color: var(--mc-gold);">Owner</p>
+                </div>
+            </a>
+            <a href="https://missnovia.vercel.app/" target="_blank" style="text-decoration:none; color:inherit;">
+                <div class="staff-card" style="border-color: var(--mc-gold);">
+                    <div class="avatar-box" style="border-color: var(--mc-gold);"><img src="https://mc-heads.net/avatar/Miss_Novia/100"></div>
+                    <h3 class="staff-name">Miss Novia</h3>
+                    <p class="staff-role" style="color: var(--mc-gold);">Owner</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="manager" data-reveal>
+        <h2 class="section-title">THE <span>MANAGER</span></h2>
+        <div class="staff-grid" style="max-width: 250px;">
+            <div class="staff-card">
+                <div class="avatar-box"><img src="https://mc-heads.net/avatar/LORD_PUNIT/100"></div>
+                <h3 class="staff-name">Punit</h3>
+                <p class="staff-role">General Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="admins" data-reveal>
+        <h2 class="section-title">NETWORK <span>ADMINS</span></h2>
+        <div class="staff-grid" style="max-width: 500px;">
+            <div class="staff-card"><div class="avatar-box"><img src="https://mc-heads.net/avatar/Meghu/100"></div><h3 class="staff-name">Meghu</h3><p class="staff-role">Administrator</p></div>
+            <div class="staff-card"><div class="avatar-box"><img src="https://mc-heads.net/avatar/Akshat/100"></div><h3 class="staff-name">Akshat</h3><p class="staff-role">Administrator</p></div>
+        </div>
+    </section>
+
+    <section id="editors" data-reveal>
+        <h2 class="section-title">MEDIA <span>EDITORS</span></h2>
+        <div class="staff-grid" style="max-width: 250px;">
+            <div class="staff-card">
+                <div class="avatar-box"><img src="https://mc-heads.net/avatar/Jailer_karan/100"></div>
+                <h3 class="staff-name">Jailer</h3>
+                <p class="staff-role">Editor</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mods" data-reveal>
+        <h2 class="section-title">THE <span>MODERATORS</span></h2>
+        <div class="staff-grid" style="max-width: 500px;">
+            <div class="staff-card"><div class="avatar-box"><img src="https://mc-heads.net/avatar/Abhinav/100"></div><h3 class="staff-name">Abhinav</h3><p class="staff-role">Moderator</p></div>
+            <div class="staff-card"><div class="avatar-box"><img src="https://mc-heads.net/avatar/AaravSharma/100"></div><h3 class="staff-name">Aarav</h3><p class="staff-role">Moderator</p></div>
+        </div>
+    </section>
+
+    <section id="creators" data-reveal>
+        <h2 class="section-title">CONTENT <span>CREATORS</span></h2>
+        <div class="staff-grid" style="max-width: 250px;">
+            <a href="https://youtube.com/@omiplexyt" target="_blank" style="text-decoration:none; color:inherit;">
+                <div class="staff-card" style="border-color: var(--mc-cyan);">
+                    <div class="avatar-box" style="border-color: var(--mc-cyan);"><img src="https://mc-heads.net/avatar/omiplex/100"></div>
+                    <h3 class="staff-name">omiplex</h3>
+                    <p class="staff-role" style="color: var(--mc-cyan);">Creator</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="store" class="store-section" data-reveal>
+        <div class="launching-tag">LAUNCHING Q1 2026</div>
+        <h1>The Official Store</h1>
+        <h2>Coming Soon</h2>
+        
+        <p>We are currently preparing exclusive ranks, cosmetics, and perks for the ultimate survival experience. Stay updated in our Discord.</p>
+
+        <a href="https://discord.gg/BNj8dTwdpm" target="_blank">
+            <button class="btn-discord">JOIN OUR DISCORD</button>
+        </a>
+
+        <div class="store-stats">
+            <div class="stat-card">
+                <span class="stat-number">200+</span>
+                <span class="stat-desc">ONLINE MEMBERS</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">70+</span>
+                <span class="stat-desc">UNIQUE REWARDS</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">24/7</span>
+                <span class="stat-desc">FAST SUPPORT</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" data-reveal>
+        <h2 class="section-title">WHY JOIN <span>FNX NETWORK?</span></h2>
+        <p style="text-align: center; color: var(--text-gray); margin-bottom: 50px;">Excellence in Minecraft survival.</p>
+        <div class="feature-grid">
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-layer-group"></i></div><h3>Prestige Ranks</h3><p>Unlock permanent multipliers, unique chat badges, and exclusive priority queue access for all seasons.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-heart"></i></div><h3>Custom Cosmetics</h3><p>From flaming trails to legendary wings, stand out in the lobby with cosmetics that never expire.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Safe & Secure</h3><p>Industry standard encryption for all transactions. Your data is protected by the highest level of security.</p></div>
+        </div>
+    </section>
+
+    <section id="server" style="text-align: center;" data-reveal>
+        <h2 class="section-title">SERVER <span>IP ADDRESS</span></h2>
+        <div style="padding: 40px; border: 2px dashed var(--primary-green); display: inline-block; background: rgba(0,0,0,0.6); border-radius: 20px;">
+            <h3 style="font-family: Oswald; font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 20px; color: var(--primary-green);">PLAY.FNXNETWORK.IN</h3>
+            <button class="btn btn-primary" onclick="copyIP()">Copy IP Address</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-socials" data-reveal>
+            <a href="https://discord.gg/BNj8dTwdpm" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="https://www.instagram.com/fnxnetworkofficial/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@fnxnetworkofficial01" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="color: #444; font-size: 0.8rem;">© 2026 FNX NETWORK | Not an official Minecraft product.</p>
+    </footer>
+
+    <script>
+        function copyIP() { 
+            navigator.clipboard.writeText("PLAY.FNXNETWORK.IN"); 
+            alert("IP Copied! See you on the server."); 
+        }
+
+        // Animation Engine
+        function reveal() {
+            const reveals = document.querySelectorAll('[data-reveal]');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+    </script>
+</body>
+</html>
