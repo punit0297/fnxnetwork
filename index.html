@@ -49,7 +49,12 @@
             padding: 0 8%; z-index: 1000;
         }
 
-        .logo-text { font-family: 'Oswald'; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); letter-spacing: 2px; }
+        .logo {
+            height: 60px; /* Adjust height as needed */
+            width: auto;
+            display: block;
+        }
+
         .nav-links { display: flex; list-style: none; gap: 15px; }
         .nav-links a { text-decoration: none; color: var(--text-white); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
 
@@ -96,11 +101,11 @@
         /* Store Specific Styles from Image */
         .store-section { 
             text-align: center; 
-            padding: 80px 10% 80px; /* Increased padding for more space */
-            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 70%, #000 100%); /* Subtle gradient */
+            padding: 80px 10% 80px; 
+            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 70%, #000 100%); 
         }
         .launching-tag {
-            background: var(--primary-green); /* Green tag */
+            background: var(--primary-green); 
             color: #000;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -113,8 +118,8 @@
             box-shadow: 0 0 15px rgba(85, 255, 85, 0.3);
         }
         .store-section h1 {
-            font-size: clamp(3rem, 7vw, 6rem); /* Larger and responsive */
-            font-family: 'Oswald', sans-serif; /* Changed to Oswald for this large text */
+            font-size: clamp(3rem, 7vw, 6rem); 
+            font-family: 'Oswald', sans-serif; 
             font-weight: 900;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -122,11 +127,11 @@
             color: var(--text-white);
         }
         .store-section h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem); /* Also larger */
-            font-family: 'Oswald', sans-serif; /* Changed to Oswald */
+            font-size: clamp(2.5rem, 6vw, 5rem); 
+            font-family: 'Oswald', sans-serif; 
             font-weight: 900;
             margin-bottom: 40px;
-            color: var(--text-white); /* White for Coming Soon */
+            color: var(--text-white); 
             opacity: 0.9;
         }
         .store-section p {
@@ -141,24 +146,24 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 50px;
-            margin-top: 80px; /* More space below button */
+            margin-top: 80px; 
         }
         .stat-card { 
             text-align: center; 
             padding: 20px; 
-            min-width: 150px; /* Ensure cards don't shrink too much */
+            min-width: 150px; 
         }
         .stat-number { 
             font-family: 'Oswald'; 
             font-size: 2.8rem; 
-            color: var(--primary-green); /* Changed to green */
+            color: var(--primary-green); 
             font-weight: 700; display: block; 
             margin-bottom: 5px;
         }
         .stat-desc { 
             text-transform: uppercase; 
-            font-size: 0.75rem; /* Slightly larger */
-            letter-spacing: 1.5px; /* More spacing */
+            font-size: 0.75rem; 
+            letter-spacing: 1.5px; 
             color: var(--text-gray); 
             font-weight: 700; 
         }
@@ -275,11 +280,11 @@
 
         <div class="store-stats">
             <div class="stat-card">
-                <span class="stat-number">200+</span>
+                <span class="stat-number">347+</span>
                 <span class="stat-desc">ONLINE MEMBERS</span>
             </div>
             <div class="stat-card">
-                <span class="stat-number">70+</span>
+                <span class="stat-number">50+</span>
                 <span class="stat-desc">UNIQUE REWARDS</span>
             </div>
             <div class="stat-card">
@@ -339,5 +344,4 @@
         window.addEventListener('load', reveal);
     </script>
 </body>
-
 </html>
