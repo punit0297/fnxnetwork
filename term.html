@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | FNX NETWORK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #55FF55;
+            --bg-black: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(85, 255, 85, 0.2);
+            --text-white: #ffffff;
+            --text-gray: #b3b3b3;
+            --transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-black);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-white);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Hero Background Same as Main Site */
+        .hero-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+                        url('https://i.ibb.co/3yyhgg4L/image.png');
+            background-size: cover; background-position: center;
+            z-index: -1;
+        }
+
+        nav {
+            position: sticky; top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--glass-border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; z-index: 1000;
+        }
+
+        .logo { height: 50px; width: auto; }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 { font-family: 'Oswald'; font-size: 3rem; color: var(--primary-green); margin-bottom: 30px; text-transform: uppercase; text-align: center; }
+        h2 { font-family: 'Oswald'; font-size: 1.5rem; color: var(--primary-green); margin: 30px 0 15px; text-transform: uppercase; border-left: 4px solid var(--primary-green); padding-left: 15px; }
+        
+        p { color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem; }
+        ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-gray); }
+        li { margin-bottom: 10px; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 25px;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            text-decoration: none;
+            font-family: 'Oswald';
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-green);
+            color: #000;
+        }
+
+        footer { text-align: center; padding: 40px 0; border-top: 2px solid var(--glass-border); margin-top: 50px; background: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="hero-bg"></div>
+
+    <nav>
+        <img src="FNX_LOGO.png" alt="FNX Logo" class="logo">
+        <a href="index.html" class="back-btn" style="margin-top:0;">Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <h1>Terms & Conditions</h1>
+        <p>Welcome to <strong>FNX NETWORK</strong>. By accessing our server or website, you agree to comply with the following terms and services.</p>
+
+        <h2>1. General Rules</h2>
+        <p>All players must maintain a respectful environment. The following are strictly prohibited:</p>
+        <ul>
+            <li>Hacking, cheating, or using unauthorized clients/mods.</li>
+            <li>Toxic behavior, racism, or harassment of any kind.</li>
+            <li>Exploiting bugs or glitches for personal gain.</li>
+            <li>Advertising other servers or commercial services.</li>
+        </ul>
+
+        <h2>2. Virtual Goods & Ranks</h2>
+        <p>All purchases made on the FNX Store are for virtual items used within the network. These items have no real-world value.</p>
+        <ul>
+            <li>Ranks and perks are tied to the account used during purchase.</li>
+            <li>We reserve the right to change rank perks at any time for server balance.</li>
+        </ul>
+
+        <h2>3. Refund Policy</h2>
+        <p>Since all products are digital and delivered instantly, <strong>we do not offer refunds</strong>. Any attempt to chargeback will result in a permanent ban from the FNX Network and its associated platforms.</p>
+
+        <h2>4. Data & Privacy</h2>
+        <p>We collect minimal data (Minecraft UUID and IP) to ensure server security. Your data is never sold to third parties.</p>
+
+        <h2>5. Disclaimer</h2>
+        <p>FNX NETWORK is NOT an official Minecraft product and is not affiliated with Mojang AB or Microsoft.</p>
+
+        <center><a href="index.html" class="back-btn">I Accept - Back to Home</a></center>
+    </div>
+
+    <footer>
+        <p style="color: #444; font-size: 0.8rem;">© 2026 FNX NETWORK | Not an official Minecraft product.</p>
+    </footer>
+
+</body>
+</html>
