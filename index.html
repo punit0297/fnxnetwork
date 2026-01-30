@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNX NETWORK | Official </title>
     <link rel="icon" type="image/png" href="FNX_LOGO.png">
+    <link rel="icon" type="image/png" href="FNX_LOGO.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
     
@@ -57,6 +58,12 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
+        /* NEW STORE ANIMATIONS */
+        @keyframes storeTextGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(85, 255, 85, 0.2); }
+            50% { text-shadow: 0 0 25px rgba(85, 255, 85, 0.6), 0 0 40px rgba(85, 255, 85, 0.3); }
+        }
+
         .hero-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
@@ -104,7 +111,7 @@
         [data-reveal] { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
         [data-reveal].active { opacity: 1; transform: translateY(0); }
 
-        /* --- STAFF CARDS & AVATAR FLIP --- */
+        /* --- STAFF CARDS --- */
         .staff-grid { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; max-width: 1000px; margin: 0 auto; }
         .staff-card { 
             background: var(--glass-bg); border: 1px solid var(--glass-border); 
@@ -124,7 +131,7 @@
         .avatar-box img { width: 100%; height: 100%; image-rendering: pixelated; transition: 0.6s; }
         .staff-card:hover .avatar-box img { transform: rotateY(-180deg); }
 
-        /* --- FEATURE CARDS (WHY JOIN) FIX --- */
+        /* --- FEATURE CARDS --- */
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
         .feature-card { 
             background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); 
@@ -139,15 +146,20 @@
         }
         .feature-card:hover .feature-icon { transform: scale(1.2) rotate(-10deg); background: var(--primary-green); color: #000; }
 
-        /* --- STORE SECTION FIX --- */
+        /* --- STORE SECTION ENHANCEMENTS --- */
         .store-section { 
             text-align: center; padding: 100px 10%; 
             background: radial-gradient(circle at center, rgba(85, 255, 85, 0.08) 0%, rgba(0,0,0,0) 70%); 
         }
-        .launching-tag {
-            background: var(--primary-green); color: #000; font-weight: 800; font-size: 0.85rem;
-            padding: 8px 20px; border-radius: 30px; display: inline-block; margin-bottom: 30px;
-            letter-spacing: 2px; animation: float 3s infinite ease-in-out;
+        .store-section h2 { animation: storeTextGlow 4s linear infinite; }
+        .launching-tag { animation: float 3s ease-in-out infinite, pulseGlow 2s infinite !important; }
+        
+        .stat-card { transition: var(--transition); border: 1px solid transparent; }
+        .stat-card:hover { 
+            transform: translateY(-10px); 
+            background: rgba(85, 255, 85, 0.05); 
+            border-color: var(--glass-border); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         /* --- BUTTONS & IP BOX --- */
@@ -158,18 +170,22 @@
         }
         .btn-primary { background: var(--primary-green); color: #000; box-shadow: 0 5px 15px rgba(85, 255, 85, 0.3); }
         .btn-primary:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(85, 255, 85, 0.5); }
-        .btn-discord { 
-            background: var(--primary-green); color: #000; border: none; padding: 22px 50px; font-size: 1.1rem; 
+        
+        .btn-store {
+            background: var(--primary-green); color: #000; border: none; padding: 22px 50px; font-size: 1.3rem; 
             border-radius: 15px; box-shadow: 0 0 25px rgba(85, 255, 85, 0.3); 
-            font-family: 'Montserrat'; font-weight: 900; cursor: pointer; transition: 0.4s; animation: pulseGlow 2s infinite;
+            font-family: 'Oswald'; font-weight: 900; cursor: pointer; transition: 0.4s; text-decoration: none; display: inline-block;
+            animation: pulseGlow 2s infinite;
         }
+        .btn-store:hover { transform: scale(1.05); }
+
         .ip-box {
             padding: 50px; border: 2px dashed var(--primary-green); display: inline-block; 
             background: rgba(0,0,0,0.8); border-radius: 30px; transition: 0.5s; cursor: pointer;
         }
         .ip-box:hover { border-style: solid; box-shadow: var(--glow-shadow); transform: scale(1.02); }
 
-        /* --- FOOTER & SOCIALS ANIMATION --- */
+        /* --- FOOTER & SOCIALS --- */
         .footer-socials a {
             color: #fff; font-size: 2.2rem; display: inline-block;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -293,16 +309,22 @@
         </div>
     </section>
 
-    <section id="store" class="store-section" data-reveal>
-        <div class="launching-tag">LAUNCHING Q1 2026</div>
-        <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-family: 'Oswald'; font-weight: 900; text-transform: uppercase;">The Official Store</h1>
-        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-family: 'Oswald'; color: var(--text-gray); margin-bottom: 40px;">Coming Soon</h2>
-        
-        <p style="color: var(--text-gray); max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem;">Exclusive ranks, stylish cosmetics, and game-changing perks are on the way to redefine survival. Don’t miss out — stay connected via our Discord.</p>
+<section id="store" class="store-section" data-reveal>
+        <div class="launching-tag" style="background: var(--primary-green); color: #000; font-weight: 900; padding: 10px 25px; border-radius: 50px; display: inline-block; margin-bottom: 25px; letter-spacing: 2px; box-shadow: 0 0 20px rgba(85, 255, 85, 0.4);">
+            STORE IS LIVE
+        </div>
 
-        <a href="https://discord.gg/BNj8dTwdpm" target="_blank">
-            <button class="btn-discord">JOIN OUR DISCORD</button>
-        </a>
+        <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-family: 'Oswald'; font-weight: 900; text-transform: uppercase; margin-bottom: 10px;">The Official Store</h1>
+        <h2 style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-family: 'Oswald'; color: var(--primary-green); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;">OFFICIALLY LAUNCHED</h2>
+        
+        <p style="color: var(--text-gray); max-width: 750px; margin: 0 auto 50px; font-size: 1.15rem; line-height: 1.8;">
+            The wait is over! Support the FNX Network and unlock your true potential. From legendary ranks to exclusive server-wide perks, get everything you need to dominate the game.
+        </p>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <a href="https://fnx-network.tebex.io/" target="_blank" class="btn-store">CLICK HERE TO VISIT STORE</a>
+            <a href="https://discord.gg/BNj8dTwdpm" target="_blank" style="color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;">Join Discord for Store Support <i class="fab fa-discord"></i></a>
+        </div>
 
         <div class="store-stats" style="display: flex; justify-content: center; gap: 50px; margin-top: 80px; flex-wrap: wrap;">
             <div class="stat-card" style="transition: 0.3s; padding: 25px; border-radius: 15px;">
