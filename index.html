@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNX NETWORK | Official </title>
     <link rel="icon" type="image/png" href="FNX_LOGO.png">
-    <link rel="icon" type="image/png" href="FNX_LOGO.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
     
@@ -15,7 +14,7 @@
             --mc-gold: #FFAA00;
             --mc-cyan: #55FFFF;
             --accent-green-alt: #00FF00;
-            --bg-black: #0a0a0a;
+            --bg-black: #050505;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(85, 255, 85, 0.2);
             --card-bg: #121212;
@@ -35,6 +34,42 @@
             overflow-x: hidden;
         }
 
+        /* --- UPDATED INTERACTIVE JAVA BACKGROUND --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a1a0a 0%, #050505 100%);
+        }
+
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%;
+            background: 
+                linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)),
+                url('https://wallpaperaccess.com/full/3990429.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            opacity: 0.6;
+            filter: saturate(1.2) brightness(0.7);
+        }
+
+        /* Scanline and Noise Effect */
+        .overlay-fx {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
         /* --- ANIMATIONS --- */
         @keyframes pulseGlow {
             0% { filter: drop-shadow(0 0 10px rgba(85, 255, 85, 0.4)); }
@@ -48,43 +83,27 @@
             100% { transform: translateY(0px); }
         }
 
-        @keyframes bgZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
         @keyframes slideIn {
             from { opacity: 0; transform: translateX(-50px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* NEW STORE ANIMATIONS */
         @keyframes storeTextGlow {
             0%, 100% { text-shadow: 0 0 10px rgba(85, 255, 85, 0.2); }
             50% { text-shadow: 0 0 25px rgba(85, 255, 85, 0.6), 0 0 40px rgba(85, 255, 85, 0.3); }
         }
 
-        .hero-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                        url('https://i.ibb.co/3yyhgg4L/image.png');
-            background-size: cover; background-position: center;
-            z-index: -1;
-            animation: bgZoom 20s infinite alternate ease-in-out;
-        }
-
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; height: 80px;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
             border-bottom: 2px solid var(--glass-border);
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 8%; z-index: 1000;
             animation: slideIn 0.8s ease-out;
         }
 
-        .logo {
-            height: 60px; width: auto; display: block; transition: var(--transition);
-        }
+        .logo { height: 60px; width: auto; transition: var(--transition); }
         .logo:hover { transform: rotate(5deg) scale(1.1); filter: drop-shadow(0 0 10px var(--primary-green)); }
 
         .nav-links { display: flex; list-style: none; gap: 20px; }
@@ -100,7 +119,8 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
-        section { padding: 100px 10% 60px; min-height: 40vh; }
+        /* --- SECTIONS --- */
+        section { padding: 100px 10% 60px; min-height: 40vh; position: relative; z-index: 2; }
         .section-title { 
             text-align: center; font-family: 'Oswald', sans-serif; 
             font-size: 2.8rem; margin-bottom: 50px; text-transform: uppercase; 
@@ -116,7 +136,7 @@
         .staff-card { 
             background: var(--glass-bg); border: 1px solid var(--glass-border); 
             padding: 35px 25px; text-align: center; transition: var(--transition); 
-            backdrop-filter: blur(10px); border-radius: 15px; flex: 1 1 200px; max-width: 240px;
+            backdrop-filter: blur(15px); border-radius: 15px; flex: 1 1 200px; max-width: 240px;
         }
         .staff-card:hover { 
             transform: translateY(-15px) scale(1.05); border-color: var(--primary-green); 
@@ -146,7 +166,7 @@
         }
         .feature-card:hover .feature-icon { transform: scale(1.2) rotate(-10deg); background: var(--primary-green); color: #000; }
 
-        /* --- STORE SECTION ENHANCEMENTS --- */
+        /* --- STORE --- */
         .store-section { 
             text-align: center; padding: 100px 10%; 
             background: radial-gradient(circle at center, rgba(85, 255, 85, 0.08) 0%, rgba(0,0,0,0) 70%); 
@@ -162,7 +182,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* --- BUTTONS & IP BOX --- */
         .btn { 
             padding: 16px 40px; font-weight: 700; text-transform: uppercase; cursor: pointer; 
             transition: var(--transition); text-decoration: none; font-family: 'Oswald'; 
@@ -185,7 +204,6 @@
         }
         .ip-box:hover { border-style: solid; box-shadow: var(--glow-shadow); transform: scale(1.02); }
 
-        /* --- FOOTER & SOCIALS --- */
         .footer-socials a {
             color: #fff; font-size: 2.2rem; display: inline-block;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -195,16 +213,12 @@
             filter: drop-shadow(0 0 15px var(--primary-green));
             color: var(--primary-green) !important;
         }
+
         .footer-links a { 
             color: var(--text-gray); text-decoration: none; font-size: 0.8rem; font-weight: 700; 
             text-transform: uppercase; letter-spacing: 2px; transition: 0.4s; position: relative;
         }
         .footer-links a:hover { color: var(--primary-green); text-shadow: 0 0 10px rgba(85, 255, 85, 0.5); }
-        .footer-links a::after {
-            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
-            background: var(--primary-green); transition: 0.4s;
-        }
-        .footer-links a:hover::after { width: 100%; }
 
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #050505; }
@@ -215,6 +229,8 @@
 <body>
 
     <div class="hero-bg"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div class="overlay-fx"></div>
 
     <nav>
         <img src="FNX_LOGO.png" alt="FNX Network Logo" class="logo">
@@ -259,70 +275,37 @@
     <section id="manager" data-reveal>
         <h2 class="section-title">THE <span>MANAGER</span></h2>
         <div class="staff-grid" style="max-width: 300px;">
-        <a href="https://punit.fnxnetwork.in/" target="_blank" style="text-decoration:none; color:inherit; display:contents;">
-            <div class="staff-card">
-                <div class="avatar-box"><img src="https://mc-heads.net/avatar/LORD_PUNIT/100"></div>
-                <h3 class="staff-name">Punit</h3>
-                <p class="staff-role">General Manager</p>
-            </div>
-	</a>
+            <a href="https://punit.fnxnetwork.in/" target="_blank" style="text-decoration:none; color:inherit; display:contents;">
+                <div class="staff-card">
+                    <div class="avatar-box"><img src="https://mc-heads.net/avatar/LORD_PUNIT/100"></div>
+                    <h3 class="staff-name">Punit</h3>
+                    <p class="staff-role">General Manager</p>
+                </div>
+            </a>
         </div>
     </section>
 
-    <section id="admins" data-reveal>
-        <h2 class="section-title">NETWORK <span>ADMINS</span></h2>
-        <div class="staff-grid" style="max-width: 600px;">
-            <div class="staff-card"><div class="avatar-box"><img src="https://mc-heads.net/avatar/2970529d4f9f48ec2d4215ef5b404607f2e2a5d6e26ee3745854381393b59010/100"></div><h3 class="staff-name">Akshat</h3><p class="staff-role">Administrator</p></div>
-        </div>
-    </section>
-
-    <section id="editors" data-reveal>
-        <h2 class="section-title">MEDIA <span>EDITORS</span></h2>
-        <div class="staff-grid" style="max-width: 300px;">
-            <div class="staff-card">
-                <div class="avatar-box"><img src="https://mc-heads.net/avatar/90db8219186de872aad8ff63fd7ac9693ebe956cfbe749db2f24ae1cd9ef369c/100"></div>
-                <h3 class="staff-name">Jailer_Karan</h3>
-                <p class="staff-role">Editor</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="mods" data-reveal>
-        <h2 class="section-title">THE <span>DEVELOPER</span></h2>
-        <div class="staff-grid" style="max-width: 600px;">
-            <div class="staff-card"><div class="avatar-box"><img src="https://mc-heads.net/avatar/steve/100"></div><h3 class="staff-name">Comet</h3><p class="staff-role">Developer</p></div>
-        </div>
-    </section>
-
-<section id="store" class="store-section" data-reveal>
+    <section id="store" class="store-section" data-reveal>
         <div class="launching-tag" style="background: var(--primary-green); color: #000; font-weight: 900; padding: 10px 25px; border-radius: 50px; display: inline-block; margin-bottom: 25px; letter-spacing: 2px; box-shadow: 0 0 20px rgba(85, 255, 85, 0.4);">
             STORE IS LIVE
         </div>
-
         <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-family: 'Oswald'; font-weight: 900; text-transform: uppercase; margin-bottom: 10px;">The Official Store</h1>
         <h2 style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-family: 'Oswald'; color: var(--primary-green); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;">OFFICIALLY LAUNCHED</h2>
-        
         <p style="color: var(--text-gray); max-width: 750px; margin: 0 auto 50px; font-size: 1.15rem; line-height: 1.8;">
-            The wait is over! Support the FNX Network and unlock your true potential. From legendary ranks to exclusive server-wide perks, get everything you need to dominate the game.
+            Unlock your true potential. From legendary ranks to exclusive server-wide perks, get everything you need to dominate the game.
         </p>
-
         <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
             <a href="https://fnx-network.tebex.io/" target="_blank" class="btn-store">CLICK HERE TO VISIT STORE</a>
             <a href="https://discord.gg/BNj8dTwdpm" target="_blank" style="color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;">Join Discord for Store Support <i class="fab fa-discord"></i></a>
         </div>
-
         <div class="store-stats" style="display: flex; justify-content: center; gap: 50px; margin-top: 80px; flex-wrap: wrap;">
-            <div class="stat-card" style="transition: 0.3s; padding: 25px; border-radius: 15px;">
+            <div class="stat-card" style="padding: 25px; border-radius: 15px;">
                 <span class="stat-number" style="font-family: 'Oswald'; font-size: 3rem; color: var(--primary-green); font-weight: 900; display: block;">200+</span>
                 <span class="stat-desc" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; color: var(--text-gray);">Online Members</span>
             </div>
-            <div class="stat-card" style="transition: 0.3s; padding: 25px; border-radius: 15px;">
+            <div class="stat-card" style="padding: 25px; border-radius: 15px;">
                 <span class="stat-number" style="font-family: 'Oswald'; font-size: 3rem; color: var(--primary-green); font-weight: 900; display: block;">70+</span>
                 <span class="stat-desc" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; color: var(--text-gray);">Unique Rewards</span>
-            </div>
-            <div class="stat-card" style="transition: 0.3s; padding: 25px; border-radius: 15px;">
-                <span class="stat-number" style="font-family: 'Oswald'; font-size: 3rem; color: var(--primary-green); font-weight: 900; display: block;">24/7</span>
-                <span class="stat-desc" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; color: var(--text-gray);">Fast Support</span>
             </div>
         </div>
     </section>
@@ -330,9 +313,9 @@
     <section id="about" data-reveal>
         <h2 class="section-title">WHY JOIN <span>FNX NETWORK?</span></h2>
         <div class="feature-grid">
-            <div class="feature-card"><div class="feature-icon"><i class="fas fa-layer-group"></i></div><h3>Exclusive Ranks</h3><p>Unlock permanent boosts, exclusive chat badges, and priority queue access across all seasons.</p></div>
-            <div class="feature-card"><div class="feature-icon"><i class="fas fa-heart"></i></div><h3>Signature Cosmetics</h3><p>From fiery trails to legendary wings, stand out in the lobby with permanent cosmetics.</p></div>
-            <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Safe & Secure</h3><p>Every transaction is protected with industry-standard encryption and top-level security.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-layer-group"></i></div><h3>Exclusive Ranks</h3><p>Unlock permanent boosts, exclusive chat badges, and priority queue access.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-heart"></i></div><h3>Signature Cosmetics</h3><p>Stand out in the lobby with legendary fiery trails and wings.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Safe & Secure</h3><p>Protected transactions with industry-standard encryption.</p></div>
         </div>
     </section>
 
@@ -379,10 +362,13 @@
     </footer>
 
     <script>
+        // --- IP COPY LOGIC ---
         function copyIP() { 
             navigator.clipboard.writeText("PLAY.FNXNETWORK.IN"); 
             alert("IP Copied! See you on the server."); 
         }
+
+        // --- SCROLL REVEAL ENGINE ---
         function reveal() {
             const reveals = document.querySelectorAll('[data-reveal]');
             reveals.forEach(el => {
@@ -394,6 +380,83 @@
         window.addEventListener('scroll', reveal);
         window.addEventListener('load', reveal);
 
+        // --- INTERACTIVE BACKGROUND ENGINE (JAVA STYLE) ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(85, 255, 85, 0.6)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+            update() {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = mouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
+                if (distance < mouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx / 10;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy / 10;
+                    }
+                }
+            }
+        }
+
+        function initParticles() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].draw();
+                particles[i].update();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', initParticles);
+        initParticles();
+        animateParticles();
+
+        // --- MUSIC & OVERLAY LOGIC ---
         const music = document.getElementById('bg-music');
         const overlay = document.getElementById('enter-overlay');
         const control = document.getElementById('music-control');
@@ -421,7 +484,3 @@
     </script>
 </body>
 </html>
-
-
-
-
